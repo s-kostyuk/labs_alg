@@ -4,19 +4,20 @@ unit = input("Выберите единицу длины L: дм, км, м, мм
 
 L = input("Введите значение длины L в выбранных единицах: ")
 
-if unit == "дм" then
+select unit 
+case "дм" then
     L = L / 10;
-elseif unit == "км" then 
+case "км" then 
     L = L * 1000;
-elseif unit == "м" then 
+case "м" then 
     L = L;
-elseif unit == "мм" then 
+case "мм" then 
     L = L / 1000;
-elseif unit == "см" then 
+case "см" then 
     L = L / 100;
 else
     disp( "Неверная единица" )
     return
 end
 
-disp( L, "Длина L в метрах: " )
+mprintf( "\nДлина L в метрах: %d", L )
