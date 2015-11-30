@@ -1,14 +1,4 @@
-//29, 32x 1 + 4, 48x 2 + 9, 98x 3 +1, 22x 4 = −201, 94
-//5, 33x 1 + 31, 78x 2 +10, 06x 3 + 4, 29x 4 = −244, 29
-//−14, 75x 1 − 5, 23x 2 + 29, 55x 3 − 5,85x 4 = −165,13
-//13, 22x 1 + 0, 62x 2 −10,85x 3 + 32,17x 4 = −327, 99
-
-A = [  29.32,  4.48,   9.98,  1.22;
-        5.33, 31.78,  10.06,  4.29;
-      -14.75, -5.23,  29.55, -5.85;
-       13.22,  0.62, -10.85, 32.17 ];
-       
-b = [ -201.94; -244.29; -165.13; -327.99 ];
+exec( get_absolute_file_path('support.sce') + "variables.sce", -1 );
 
 function isNull=isAlmostNull( x )
     if (abs( max( x ) ) > 10^-12) then
@@ -18,19 +8,35 @@ function isNull=isAlmostNull( x )
     end
 endfunction
 
-function isCorrect=checkSolving( A, x, b )
-  P = A * x - b;
-  
-  isCorrect = isAlmostNull( P );
+function isCorrect=isCorrectlySolved( A, x, b )
+    P = A * x - b;
+    
+    isCorrect = isAlmostNull( P );
+endfunction
+
+function result=substitute( A, x, b )
+    result = A * x - b;
+endfunction
+
+function checkSolving( A, x, b )
+    if( isCorrectlySolved( A, x, b ) ) then
+        disp ("Matrix was solved correctly");
+    else
+        disp( substitute( A, x, b ), "Disparity:" );
+    end;
 endfunction
 
 function is=isSquare( matr )
-  [n, m] = size( matr );
-  
-  if( n ~= m ) then
-      is = %F;
-  else
-      is = %T;
-  end
-  
+    [n, m] = size( matr );
+
+    if( n ~= m ) then
+        is = %F;
+    else
+        is = %T;
+    end
+
 endfunction
+
+if( ~ isSquare( A ) ) then
+    disp( "Matrix A is not square. Incorrect results are possible." )
+end

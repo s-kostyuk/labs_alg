@@ -1,6 +1,6 @@
 clear;
 
-exec( get_absolute_file_path('4_simple_iterations.sce') + "support.sce", -1 );
+exec( get_absolute_file_path('5_seidel.sce') + "support.sce", -1 );
 
 n = length( b );
 
@@ -28,7 +28,9 @@ x = bbeta;
 while %T do
     xprev = x;
     
-    x = bbeta + alpha*xprev;
+    for( i = 1 : n )
+        x( i ) = bbeta( i ) + alpha( i, : ) * x;
+    end
     
     if( abs( xprev - x ) <= density )
         break;

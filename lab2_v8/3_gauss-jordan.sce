@@ -8,8 +8,6 @@ C = rref( [ A b ] );
 
 x = C( :, m );
 
-if( checkSolving( A, x, b ) ) then
-    disp ("Matrix was solved correctly");
-end;
+checkSolving( A, x, b );
 
 disp( x, "x = " );
