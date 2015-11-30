@@ -22,7 +22,7 @@ function checkSolving( A, x, b )
     if( isCorrectlySolved( A, x, b ) ) then
         disp ("Matrix was solved correctly");
     else
-        disp( substitute( A, x, b ), "Disparity:" );
+        disp( substitute( A, x, b ), "Residual:" );
     end;
 endfunction
 
