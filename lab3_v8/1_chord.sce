@@ -14,11 +14,9 @@ function x=ChordSolve( f, a, b, density )
     
     if( ( f( a ) * secondDerA ) > 0 ) then
         FindNextX = GetNextXFixedA;
-        disp( "a" );
         x = b;
     elseif( ( f( b ) * secondDerB ) > 0  ) then
         FindNextX = GetNextXFixedB;
-        disp( "b" );
         x = a;
     else
         disp( "Something wrong with sign of function and its second derivative" )
@@ -30,7 +28,6 @@ function x=ChordSolve( f, a, b, density )
     
     while %T
         xprev = x;
-        mprintf( "\nx=%d, a=%d, b=%d\n", x, a, b );
         
         x = FindNextX( x, a, b, f );
         if( abs( xprev - x ) < density )
