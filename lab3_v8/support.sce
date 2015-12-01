@@ -1,7 +1,7 @@
 exec( get_absolute_file_path('support.sce') + "variables.sce", -1 );
 
 function [ a, b ] = askBorders( fun )
-    x = [0.1:0.1:10]';
+    x = [0.1:0.1:5]';
     
     plot2d( x, fun( x ) );
     

@@ -1,7 +1,7 @@
 exec( get_absolute_file_path('2_tangent.sce') + "support.sce", -1 );
 
 function nextx=TangentGetNextX( x, f )
-    [ firstDer, secondDer ] = numderivative( f, x );
+    firstDer = numderivative( f, x );
     
     nextx = x - f( x ) / firstDer;
 endfunction
