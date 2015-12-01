@@ -1,5 +1,5 @@
 function y=f1( x )
-    y = 2 * x.^2 - 0.5 ^x - 3;
+    y = 0.5^x - 3 + ( x + 1 ) ^ 2
 endfunction
 
 function y=f2( x )

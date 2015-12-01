@@ -1,21 +1,9 @@
 exec( get_absolute_file_path('support.sce') + "variables.sce", -1 );
 
-function [ a, b ] = askBorders( nOfFunction )
+function [ a, b ] = askBorders( fun )
     x = [0.1:0.1:10]';
     
-    select nOfFunction
-    case 1 then
-        plot2d( x, f1( x ) );
-        
-    case 2 then
-        plot2d( x, f2( x ) );
-        
-    case 3 then
-        plot2d( x, f3( x ) );
-        
-    else
-        disp( "unknown function" );
-    end
+    plot2d( x, fun( x ) );
     
     desc = gca();
     desc.x_location = "origin";
