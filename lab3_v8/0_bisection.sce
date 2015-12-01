@@ -1,5 +1,3 @@
-clear;
-
 exec( get_absolute_file_path('0_bisection.sce') + "support.sce", -1 );
 
 function [intervalA, intervalB] = GetNewInterval(f, a, b)
