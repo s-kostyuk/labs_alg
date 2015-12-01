@@ -1,5 +1,3 @@
-clear;
-
 exec( get_absolute_file_path('1_chord.sce') + "support.sce", -1 );
 
 function nextx=ChordGetNextXFixedA( x, a, b, f )
@@ -15,14 +13,13 @@ function x=ChordSolve( f, a, b, density )
     [ firstDerB, secondDerB ] = numderivative( f, b );
     
     if( ( f( a ) * secondDerA ) > 0 ) then
-        FindNextX = ChordGetNextXFixedA;
+        GetNextX = ChordGetNextXFixedA;
         x = b;
     elseif( ( f( b ) * secondDerB ) > 0  ) then
-        FindNextX = ChordGetNextXFixedB;
+        GetNextX = ChordGetNextXFixedB;
         x = a;
     else
         disp( "Something wrong with sign of function and its second derivative" )
-        x = return( a );
     end
     
     it = 1;
@@ -30,7 +27,7 @@ function x=ChordSolve( f, a, b, density )
     while %T
         xprev = x;
         
-        x = FindNextX( x, a, b, f );
+        x = GetNextX( x, a, b, f );
         if( abs( xprev - x ) < density )
             break;
         end
