@@ -11,15 +11,20 @@ endfunction
 function x=IterSolve( f, a, b, density )
     q = max( abs( fXByXHardcodedDerivative( [ a : 0.1 : b] ) ) );
     
+    if( q >= 1 ) then
+        disp( "Unable to use specified x = φ(x) function with this interval. See conditions for convergence of this method for details." );
+        return;
+    end
+    
     it = 1;
     
-    x = (a + b) / 2
+    x = ( a + b ) / 2
     
     while %T
         xprev = x;
         
         x = fXByXHardcoded( x );
-        if( abs( xprev - x ) < ( 1 - q ) * density / q)
+        if( abs( xprev - x ) < ( 1 - q ) * density / q )
             break;
         end
         

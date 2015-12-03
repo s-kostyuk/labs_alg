@@ -8,7 +8,7 @@ function [intervalA, intervalB] = GetNewInterval(f, a, b)
         intervalA = C0;
         intervalB = b;
     else
-        disp( "Error: Your interval isn`t correct." )
+        disp( "Invalid interval specified" )
     end
 endfunction
 
@@ -16,7 +16,7 @@ function x = BisectionSolve( f, a, b, density )
     it = 1;
     
     while %T
-        [a,b] = GetNewInterval( f, a, b );
+        [ a, b ] = GetNewInterval( f, a, b );
         
         if(abs( a - b ) < density)
             x = ( a + b ) / 2;

@@ -6,7 +6,7 @@ exec( get_absolute_file_path('main.sce') + "variables.sce", -1 );
 
 disp( "Determening the root isolation interval..." );
 
-[a, b] = askBorders( functionToInspect );
+[ a, b ] = askBorders( functionToInspect );
 
 disp( "Starting solving with bisection method..." );
 x = BisectionSolve( functionToInspect, a, b, density );
