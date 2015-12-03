@@ -1,13 +1,16 @@
-exec( get_absolute_file_path('support.sce') + "variables.sce", -1 );
+exec( get_absolute_file_path('support.sce') + "0_bisection.sce", -1 );
+exec( get_absolute_file_path('support.sce') + "1_chord.sce", -1 );
+exec( get_absolute_file_path('support.sce') + "2_tangent.sce", -1 );
+exec( get_absolute_file_path('support.sce') + "3_simple_iter.sce", -1 );
 
 function [ a, b ] = askBorders( fun )
-    x = [0.1:0.1:5]';
+    x = [ 0 : 0.1 : 5 ]';
     
     plot2d( x, fun( x ) );
     
     desc = gca();
-    desc.x_location = "origin";
     
+    desc.x_location = "origin";
     desc.y_location = "origin";
     
     xgrid();

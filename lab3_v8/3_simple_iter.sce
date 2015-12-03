@@ -1,11 +1,11 @@
-exec( get_absolute_file_path('3_simple_iter.sce') + "support.sce", -1 );
-
+// функция вида x = φ(x), полученная вручную из исследуемой функции
 function newx=fXByXHardcoded( x )
-    newx = ( -0.5^x + 3 - x^2 -1 ) / 2;
+    newx = ( -0.5^x + 3 - x.^2 -1 ) / 2;
 endfunction
 
+// производная от функции выше
 function newx=fXByXHardcodedDerivative( x )
-    newx = 0.346574 * 0.5^x - x;
+    newx = numderivative( fXByXHardcoded, x );
 endfunction
 
 function x=IterSolve( f, a, b, density )
@@ -19,7 +19,7 @@ function x=IterSolve( f, a, b, density )
         xprev = x;
         
         x = fXByXHardcoded( x );
-        if( abs( xprev - x ) < (1 - q) * density / q)
+        if( abs( xprev - x ) < ( 1 - q ) * density / q)
             break;
         end
         

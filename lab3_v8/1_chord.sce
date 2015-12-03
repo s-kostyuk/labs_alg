@@ -1,5 +1,3 @@
-exec( get_absolute_file_path('1_chord.sce') + "support.sce", -1 );
-
 function nextx=ChordGetNextXFixedA( x, a, b, f )
     nextx = x - ( f( x ) / ( f( x ) - f( a ) ) ) * ( x - a )
 endfunction
@@ -26,8 +24,8 @@ function x=ChordSolve( f, a, b, density )
     
     while %T
         xprev = x;
-        
         x = GetNextX( x, a, b, f );
+        
         if( abs( xprev - x ) < density )
             break;
         end

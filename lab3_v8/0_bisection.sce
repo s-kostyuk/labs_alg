@@ -1,7 +1,6 @@
-exec( get_absolute_file_path('0_bisection.sce') + "support.sce", -1 );
-
 function [intervalA, intervalB] = GetNewInterval(f, a, b)
-    C0 = (a+b)/ 2;
+    C0 = ( a + b ) / 2;
+    
     if ( f( a ) * f( C0 ) < 0 ) then
         intervalA = a;
         intervalB = C0;
@@ -9,18 +8,18 @@ function [intervalA, intervalB] = GetNewInterval(f, a, b)
         intervalA = C0;
         intervalB = b;
     else
-        disp("Error: Your interval isn`t correct.")
+        disp( "Error: Your interval isn`t correct." )
     end
 endfunction
 
-function x = BisectionSolve (f, a, b, density)
+function x = BisectionSolve( f, a, b, density )
     it = 1;
     
     while %T
-        [a,b] = GetNewInterval(f, a, b);
+        [a,b] = GetNewInterval( f, a, b );
         
-        if(abs(a-b) < density)
-            x = (a + b) / 2;
+        if(abs( a - b ) < density)
+            x = ( a + b ) / 2;
             break;
         end
         
