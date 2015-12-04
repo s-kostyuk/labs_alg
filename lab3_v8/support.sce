@@ -4,7 +4,7 @@ exec( get_absolute_file_path('support.sce') + "2_tangent.sce", -1 );
 exec( get_absolute_file_path('support.sce') + "3_simple_iter.sce", -1 );
 
 function [ a, b ] = askBorders( fun )
-    x = [ 0 : 0.1 : 5 ]';
+    x = [ -10 : 0.1 : 10 ]';
     
     plot2d( x, fun( x ) );
     

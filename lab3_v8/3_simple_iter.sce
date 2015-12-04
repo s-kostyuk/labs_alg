@@ -9,7 +9,19 @@ function newx=fXByXHardcodedDerivative( x )
 endfunction
 
 function x=IterSolve( f, a, b, density )
-    q = max( abs( fXByXHardcodedDerivative( [ a : 0.1 : b] ) ) );
+    q = abs( fXByXHardcodedDerivative( a ) );
+    x = a;
+    
+    step = 0.1;
+    
+    for( currx = [ a + step : step : b ] ) 
+        dervalue = abs( fXByXHardcodedDerivative( currx ) );
+        if( dervalue < q ) then
+            q = dervalue;
+            x = currx;
+            break;
+        end
+    end
     
     if( q >= 1 ) then
         disp( "Unable to use specified x = φ(x) function with this interval. See conditions for convergence of this method for details." );
@@ -17,8 +29,6 @@ function x=IterSolve( f, a, b, density )
     end
     
     it = 1;
-    
-    x = ( a + b ) / 2
     
     while %T
         xprev = x;
